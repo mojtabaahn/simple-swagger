@@ -1,0 +1,25 @@
+/*----------------------------------------------------------------
+ BoxIcons
+----------------------------------------------------------------*/
+
+@import "~boxicons/css/boxicons.min.css";
+
+@import "~codemirror/lib/codemirror.css";
+
+@import "~codemirror/addon/search/matchesonscrollbar.css";
+
+@import "~codemirror/addon/dialog/dialog.css";
+
+@import "~swagger-ui/dist/swagger-ui.css";
+
+.font-fira-code {
+    font-family: 'Fira Code', monospace;
+}
+
+.font-rubik{
+    font-family: 'Rubik', sans-serif;
+}
+
+.CodeMirror{
+    font-family: 'Fira Code', monospace;
+}

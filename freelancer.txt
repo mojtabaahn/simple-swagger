@@ -1,0 +1,1045 @@
+title : freelancer
+version : 1.0.0
+server : iqoala.com/api
+paths :
+ -
+  path: auth/login
+  group : Auth
+  method : post
+  parameters:
+   -
+    name : email
+    example : john@doe.com
+   -
+    name : password
+    example : asdQWE123
+  responses:
+   -
+    example :
+     msg: "Successfully logged in"
+     token : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwNVwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYwMDc3MzE3MiwiZXhwIjoxNjAwNzc2NzcyLCJuYmYiOjE2MDA3NzMxNzIsImp0aSI6Im1ObVphS05sd0lqRHNIOHciLCJzdWIiOjUyLCJwcnYiOiIwYmY2YzcxZjdjMzliODFhMmMxYjc1MTYwYzlkYTJlNTdjMmZlZDY2In0.A0giR2cxYfK6sbueeNxq_DiFceEV8_Y2ssJecQhUgW0"
+
+ -
+  path: auth/register
+  group : Auth
+  method : post
+  parameters:
+   -
+    name : first_name
+    example : john
+   -
+    name : last_name
+    example: Doe
+   -
+    name : email
+    example : john@doe.com
+   -
+    name : password
+    example : asdQWE123
+   -
+    name : mobile_number
+    example : '+989398738456'
+  responses:
+   -
+    example :
+     msg: Registration successful
+
+ -
+  path : mobile/v1/budget
+  group : Budget
+
+ -
+  path : mobile/v1/category/search
+  group : Category
+  parameters:
+   -
+    name : query
+    example : Software
+ -
+  path : mobile/v1/category/default
+  group : Category
+
+
+
+
+
+ -
+  path : mobile/v1/dashboard
+  group : Dashboard
+  responses:
+   -
+    example:
+     data:
+      "my_recent_tasks" : [],
+      "recent_related_tasks" : [], #show if user == trader
+      "recent_sent_offers" : [], #show if user == trader
+      "my_activities" : [], #show if user == trader
+      "reviews" : [], #show if user == trader
+
+
+
+
+
+ -
+  path : mobile/v1/profile/trader/notification-setting/category
+  group : Notification Setting
+  responses:
+   -
+    example:
+     data: []
+ -
+  path : mobile/v1/profile/trader/notification-setting/suburb
+  group : Notification Setting
+  response:
+   -
+    example:
+     data: []
+ -
+  path : mobile/v1/profile/trader/notification-setting/category/{category}
+  method : delete
+  group : Notification Setting
+  parameters:
+   -
+    name : category
+    type : integer
+    in : path
+    example : 22
+  responses:
+   -
+    example:
+     msg: deleted
+ -
+  path : mobile/v1/profile/trader/notification-setting/suburb/{suburb}
+  method : delete
+  group : Notification Setting
+  parameters:
+   -
+    name : suburb
+    type : integer
+    in : path
+    example : 22
+  responses:
+   -
+    example:
+     msg: deleted
+ -
+  path : mobile/v1/profile/trader/notification-setting/category
+  method : post
+  group : Notification Setting
+  parameters:
+   -
+    name : category_id
+    type : integer
+    example : 22
+  responses:
+   -
+    example:
+     msg: Saved
+     data : []
+ -
+  path : mobile/v1/profile/trader/notification-setting/suburb
+  method : post
+  group : Notification Setting
+  parameters:
+   -
+    name : suburb_id
+    type : integer
+    example : 22
+  responses:
+   -
+    example:
+     msg: Saved
+     data : []
+ -
+  path : mobile/v1/profile/trader/notification-setting/suburb
+  group : Notification Setting
+  responses:
+   -
+    example:
+     data : []
+ -
+  path : mobile/v1/profile/trader/notification-setting/status
+  group : Notification Setting
+  parameters:
+   -
+    name : is_active
+    type : bool
+    example : 1
+  responses:
+   -
+    example:
+     message : Updated
+
+
+
+
+ -
+  path : mobile/v1/offer/accept/{offer}
+  method : post
+  group : Offer
+  parameters:
+   -
+    name : offer
+    in : path
+    type : integer
+    example : 10
+  responses:
+   -
+    example:
+     message : Accepted
+     data : []
+ -
+  path : mobile/v1/offer/send/{task}
+  method : post
+  group : Offer
+  parameters:
+   -
+    name : task
+    in : path
+    type : integer
+    example : 10
+   -
+    name : message
+    example : 'Hi there'
+   -
+    name : days
+    example : 10
+   -
+    name : amount
+    example : 10000
+  responses:
+   -
+    example:
+     message : Saved
+     data : []
+ -
+  path : mobile/v1/offer/{offer}
+  group : Offer
+  parameters:
+   -
+    name: offer
+    in : path
+    example : 10
+  responses:
+   -
+    example:
+     data : []
+ -
+  path : mobile/v1/offer
+  group : Offer
+  parameters:
+   -
+    name: task_id
+    example : 10
+  responses:
+   -
+    example:
+     avg_offers_price : 1000
+     avg_offers_days : 15
+     data : []
+
+
+
+
+ -
+  path : mobie/v1/product/search
+  group : Product
+  parameters :
+   -
+    name : query
+    example : Software
+  responses :
+   -
+    example:
+     data : []
+ -
+  path : mobie/v1/product/suggestions
+  group : Product
+  responses :
+   -
+    example:
+     data : []
+
+
+ -
+  path : mobile/v1/product-category
+  group : Product Category
+  responses:
+   -
+    example :
+     data  : []
+ -
+  path : mobile/v1/product-category/search
+  group : Product Category
+  parameters:
+   -
+    name : query
+    example : Software
+  responses:
+   -
+    example :
+     data  : []
+ -
+  path : mobile/v1/product-category/suggestions
+  group : Product Category
+  responses:
+   -
+    example :
+     data  : []
+
+
+
+
+ -
+  path : mobile/v1/profile
+  group : Public Profile
+  responses :
+   -
+    example :
+     data : []
+ -
+  path : mobile/v1/profile/password
+  method : patch
+  paramters:
+   -
+    name : password
+    example : asdQWE123
+   -
+    name : password_confirmation
+    example : asdQWE123
+  responses:
+   -
+    example :
+     msg : Updated
+ -
+  path: mobile/v1/profile
+  group : Public Profile
+  method : patch
+  parameters:
+   -
+    name : first_name
+    example : john
+   -
+    name : last_name
+    example: Doe
+   -
+    name : email
+    example : john@doe.com
+   -
+    name : password
+    example : asdQWE123
+   -
+    name : mobile_number
+    example : '+989398738456'
+  responses:
+   -
+    example :
+     msg: Updated
+     data : []
+ -
+  path : mobile/v1/profile/avatar
+  group : Public Profile
+  method : post
+  parameters:
+   -
+    name : image
+    type : file
+    example : BLOB
+  responses:
+   -
+    example :
+     msg : Updated
+     data : []
+
+
+
+
+
+ -
+  path : mobile/v1/skill/search
+  group : Skills
+  parameters:
+   -
+    name : search
+    ex : php
+  responses:
+   -
+    ex :
+     data : []
+
+
+
+
+
+
+ -
+  path : mobile/v1/suburb/search
+  group : Suburbs
+  parameters:
+   -
+    name : search
+    ex : California
+  responses:
+   -
+    ex :
+     data : []
+
+
+
+
+
+
+ -
+  path : mobile/v1/task-executation-date
+  group : Executaion Dates
+  responses:
+   -
+    ex :
+     data : []
+
+
+ -
+  path : mobile/v1/task
+  group : Tasks
+  parameters :
+   -
+    name  : suburb_id
+    required : false
+    ex : 10
+   -
+    name : category_id
+    re : false
+    ex : 15
+   -
+    name : budget_id
+    re : false
+    ex : 20
+  responses:
+   -
+    ex :
+     data : []
+     links : []
+     meta : []
+ -
+  path : mobile/v1/task/{task}/cancel
+  method : post
+  group : Tasks
+  parameters :
+   -
+    name : task
+    in : path
+    ex : 5
+   -
+    name : cancel_reason_comment
+    ex : Whatever
+   -
+    name : cancel_reason
+    ex : 5
+  responses :
+   -
+    ex :
+     msg : Canceled
+ -
+  path : mobile/v1/task/{task}/done
+  method : post
+  group : Tasks
+  parameters:
+   -
+    name : task
+    in : path
+    ex : 5
+   -
+    name : rate
+    ex : 4
+   -
+    name : comment
+    ex : Very Good
+  responses :
+   -
+    ex :
+     msg : Saved
+     data : []
+ -
+  path : mobile/v1/task/{task}/review
+  method : post
+  group : Tasks
+  parameters:
+   -
+    name : task
+    in : path
+    ex : 5
+   -
+    name : rate
+    ex : 4
+   -
+    name : comment
+    ex : Very Good
+  responses :
+   -
+    ex :
+     msg : Review Sent
+     data : []
+ -
+  path : mobile/v1/task
+  method : post
+  group : Tasks
+  pa :
+   -
+    name  : suburb_id
+    ex : 10
+   -
+    name : category_id
+    ex : 15
+   -
+    name : budget_id
+    ex : 20
+   -
+    name : description
+    ex : Good Task
+   -
+    name : task_executation_date_id
+    ex : 5
+   -
+    name : attachments
+    type : array
+    ex : BLOB[]
+  re:
+   -
+    ex :
+     msg : Created
+     data : []
+ -
+  path : mobile/v1/task/{task}
+  method : patch
+  group : Tasks
+  pa :
+   -
+    name : task
+    in : path
+    ex : 5
+   -
+    name  : suburb_id
+    ex : 10
+   -
+    name : category_id
+    ex : 15
+   -
+    name : budget_id
+    ex : 20
+   -
+    name : description
+    ex : Good Task
+   -
+    name : task_executation_date_id
+    ex : 5
+   -
+    name : attachments
+    type : array
+    ex : BLOB[]
+   -
+    name : deleted_attachments
+    type : array
+    ex :
+     -
+      id : 7
+  re:
+   -
+    ex :
+     msg : Updated
+     data : []
+ -
+  path : mobie/v1/task/{task}
+  group : Tasks
+  parameters:
+   -
+    name : task
+    in : path
+    ex : 5
+  responses :
+   -
+    ex :
+     data : []
+ -
+  path : mobie/v1/task/user-done-tasks
+  group : Tasks
+  responses :
+   -
+    ex :
+     data : []
+     links : []
+     meta : []
+ -
+  path : mobie/v1/task/user-in-progress-tasks
+  group : Tasks
+  responses :
+   -
+    ex :
+     data : []
+     links : []
+     meta : []
+ -
+  path : mobie/v1/task/user-todo-tasks
+  group : Tasks
+  responses :
+   -
+    ex :
+     data : []
+     links : []
+     meta : []
+
+
+
+
+
+
+ -
+  path : mobie/v1/profile/gallery
+  group : Image Gallery
+  responses :
+   -
+    ex :
+     data : []
+ -
+  path : mobie/v1/profile/gallery/{gallery}
+  group : Image Gallery
+  method : delete
+  parameters:
+   -
+    name: gallery
+    ex : 15
+  responses :
+   -
+    ex :
+     msg : Deleted
+
+ -
+  path : mobie/v1/profile/gallery
+  group : Image Gallery
+  method : post
+  pa :
+   -
+    name : title
+    ex : Image One
+   -
+    name : image
+    type : file
+    ex : BLOB
+   -
+    name : task_id
+    ex : 15
+  responses :
+   -
+    ex :
+     msg : Saved
+     data : []
+ -
+  path : mobie/v1/profile/gallery/{gallery}
+  group : Image Gallery
+  method : patch
+  parameters:
+   -
+    name: gallery
+    ex : 15
+   -
+    name : title
+    ex : Image One
+  responses :
+   -
+    ex :
+     msg : Updated
+     data : []
+
+
+
+ -
+  path : mobie/v1/profile/video
+  group : Video Gallery
+  responses :
+   -
+    ex :
+     data : []
+ -
+  path : mobie/v1/profile/video/{video}
+  group : Video Gallery
+  method : delete
+  parameters:
+   -
+    name: video
+    ex : 15
+  responses :
+   -
+    ex :
+     msg : Deleted
+
+ -
+  path : mobie/v1/profile/video
+  group : Video Gallery
+  method : post
+  pa :
+   -
+    name : title
+    ex : Video One
+   -
+    name : video
+    type : file
+    ex : BLOB
+   -
+    name : task_id
+    ex : 15
+  responses :
+   -
+    ex :
+     msg : Saved
+     data : []
+ -
+  path : mobie/v1/profile/video/{video}
+  group : Video Gallery
+  method : patch
+  parameters:
+   -
+    name: video
+    ex : 15
+   -
+    name : title
+    ex : Video One
+  responses :
+   -
+    ex :
+     msg : Updated
+     data : []
+
+
+
+
+ -
+  path : mobie/v1/profile/trader/product
+  group : Product
+  re :
+   -
+    ex :
+     data : []
+ -
+  path : mobie/v1/profile/trader/product/new
+  group : Product
+  method : post
+  parameters:
+   -
+    name : title
+    ex : T-Shirt
+   -
+    name : product_category_id
+    ex : 15
+   -
+    name : price
+    ex : 10000
+   -
+    name : promotion
+    type :  boolean
+    ex : true
+   -
+    name : discount
+    ex : 50%
+   -
+    name : start_date
+    ex : 2019-09-09
+   -
+    name : end_date
+    ex : 2020-09-09
+  responses :
+   -
+    ex :
+     msg : Saved
+     data : []
+
+ -
+  path : mobie/v1/profile/trader/product
+  group : Product
+  method : post
+  parameters:
+   -
+    name: product_id
+    ex : 15
+   -
+    name : price
+    ex : 10000
+   -
+    name : promotion
+    type :  boolean
+    ex : true
+   -
+    name : discount
+    ex : 50%
+   -
+    name : start_date
+    ex : 2019-09-09
+   -
+    name : end_date
+    ex : 2020-09-09
+  responses :
+   -
+    ex :
+     msg : Saved
+     data : []
+
+ -
+  path : mobie/v1/profile/trader/product/{product}
+  group : Product
+  method : delete
+  parameters:
+   -
+    name: product
+    in : path
+    ex : 15
+  responses :
+   -
+    ex :
+     msg : Deleted
+
+
+
+
+
+ -
+  path : mobile/v1/profile/trader
+  gr : Traders
+  re :
+   -
+    ex :
+     data : []
+ -
+  path : mobile/v1/profile/trader
+  gr : Traders
+  method : post
+  pa :
+   -
+    name : name
+    ex : Some Company
+   -
+    name : category_id
+    ex : 15
+   -
+    name : suburb_id
+    ex : 20
+   -
+    name : phone_number
+    ex : +989398738456
+   -
+    name : website
+    ex : www.google.com
+   -
+    name : about
+    ex : About Me
+   -
+    name : abn
+    ex : 12345678910
+   -
+    name : logo
+    type : file
+    required : false
+    ex : BLOB
+   -
+    name : cover
+    type : file
+    required : false
+    ex : BLOB
+  re:
+   -
+    ex :
+     msg : Updated
+     data : []
+ -
+  path : mobile/v1/profile/trader
+  gr : Traders
+  method : patch
+  pa :
+   -
+    name : name
+    ex : Some Company
+   -
+    name : category_id
+    ex : 15
+   -
+    name : suburb_id
+    ex : 20
+   -
+    name : phone_number
+    ex : +989398738456
+   -
+    name : website
+    ex : www.google.com
+   -
+    name : about
+    ex : About Me
+   -
+    name : abn
+    ex : 12345678910
+  re:
+   -
+    ex :
+     msg : Updated
+     data : []
+ -
+  path : mobile/v1/profile/trader/cover
+  gr : Traders
+  method : patch
+  pa :
+   -
+    name : cover
+    type : file
+    required : false
+    ex : BLOB
+  re:
+   -
+    ex :
+     msg : Updated
+     data : []
+ -
+  path : mobile/v1/profile/trader/logo
+  gr : Traders
+  method : patch
+  pa :
+   -
+    name : logo
+    type : file
+    required : false
+    ex : BLOB
+  re:
+   -
+    ex :
+     msg : Updated
+     data : []
+ -
+  path : mobile/v1/profile/trader/images
+  gr : Traders
+  method : patch
+  pa :
+   -
+    name : logo
+    type : file
+    required : false
+    ex : BLOB
+   -
+    name : cover
+    type : file
+    required : false
+    ex : BLOB
+  re:
+   -
+    ex :
+     msg : Updated
+     data : []
+
+
+
+
+
+
+ -
+  path : mobile/v1/profile/trader/promotion
+  group : Promotions
+  re :
+   -
+    ex :
+     data :
+      data : []
+ -
+  path : mobile/v1/profile/trader/promotion
+  group : Promotions
+  method : post
+  pa :
+   -
+    name : product_id
+    ex : 10
+   -
+    name : discount
+    ex : 50%
+   -
+    name : start_date
+    ex : '2019-09-09'
+   -
+    name : end_date
+    ex : '2020-09-09'
+  re :
+   -
+    ex :
+     data :
+      msg : Saved
+      data : []
+ -
+  path : mobile/v1/profile/trader/promotion/{promotion}
+  group : Promotions
+  method : patch
+  pa :
+   -
+    name : promotion
+    in : path
+    ex : 35
+   -
+    name : discount
+    ex : 50%
+   -
+    name : start_date
+    ex : '2019-09-09'
+   -
+    name : end_date
+    ex : '2020-09-09'
+  re :
+   -
+    ex :
+     data :
+      msg : Updated
+      data : []
+ -
+  path : mobile/v1/profile/trader/promotion/{promotion}
+  group : Promotions
+  method : delete
+  pa :
+   -
+    name : promotion
+    in : path
+    ex : 10
+  re :
+   -
+    ex :
+     data :
+      msg : Deleted
+
+
+
+
+
+ -
+  path : mobile/v1/profile/trader/skill
+  group : Skills
+  re :
+   -
+    ex :
+     data : []
+
+ -
+  path : mobile/v1/profile/trader/skill
+  method : post
+  group : Skills
+  pa :
+  -
+   name : title
+   ex : Programming
+  re :
+   -
+    ex :
+     msg : Saved
+     data : []
+ -
+  path : mobile/v1/profile/trader/skill/{skill}
+  method : delete
+  group : Skills
+  pa :
+  -
+   name : skill
+   in : path
+   ex : 15
+  re :
+   -
+    ex :
+     msg : Deleted
+
