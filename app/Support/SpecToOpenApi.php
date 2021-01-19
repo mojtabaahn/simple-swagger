@@ -56,7 +56,7 @@ class SpecToOpenApi
      * @param Path $path
      * @return Collection
      */
-    protected function formatResponses(Path $path): Collection
+    protected function formatResponses(Path $path): array
     {
         return collect($path->responses)->mapWithKeys(fn(Response $response) => [$response->code => [
             'description' => $response->description,
@@ -65,14 +65,14 @@ class SpecToOpenApi
                     'example' => $response->example
                 ]
             ]
-        ]]);
+        ]])->toArray();
     }
 
     /**
      * @param Path $path
      * @return Collection
      */
-    protected function formatParams(Path $path): Collection
+    protected function formatParams(Path $path): array
     {
         return collect($path->parameters)->map(
             fn(Parameter $parameter) => [
@@ -85,6 +85,6 @@ class SpecToOpenApi
                         'example' => $parameter->example,
                     ]
                 ] + ($parameter->in !== 'path' ? ['style' => 'form'] : [])
-        );
+        )->toArray();
     }
 }

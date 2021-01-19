@@ -27,8 +27,9 @@ class Spec
     public function toOpenApi($yaml = false)
     {
         $return = app(SpecToOpenApi::class)($this);
-        if($yaml){
-            $return = collect($return)->toJson(JSON_PRETTY_PRINT);
+        if ($yaml) {
+            // $return = Yaml::dump($return, 10, 1);
+            $return = json_encode($return, JSON_PRETTY_PRINT);
         }
         return $return;
     }

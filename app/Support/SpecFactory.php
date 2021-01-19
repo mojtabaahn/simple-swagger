@@ -33,7 +33,7 @@ class SpecFactory
     {
         return collect($paths)->map(fn($path) => Path::make()->set([
             'method' => $path['method'] ?? $path['me'] ?? 'get',
-            'path' => $path['path'] ?? $path['pa']  ?? '—',
+            'path' => $path['path']  ?? '—',
             'group' => $path['group'] ?? $path['gr'] ?? 'base',
             'summary' => $path['summary'] ?? $path['su'] ?? '—',
             'description' => $path['description'] ?? $path['de'] ?? '—',
